@@ -1,5 +1,6 @@
 ﻿using System;
 ﻿using Akka.Actor;
+using Akka.Configuration;
 
 namespace WinTail
 {
@@ -10,19 +11,19 @@ namespace WinTail
 
         static void Main(string[] args)
         {
+            var config = ConfigurationFactory.ParseString("akka { suppress-json-serializer-warning = on }");
+
             // initialize MyActorSystem
-            // YOU NEED TO FILL IN HERE
+            MyActorSystem = ActorSystem.Create("MyActorSystem", config);
 
             PrintInstructions();
 
             // time to make your first actors!
-            //YOU NEED TO FILL IN HERE
-            // make consoleWriterActor using these props: Props.Create(() => new ConsoleWriterActor())
-            // make consoleReaderActor using these props: Props.Create(() => new ConsoleReaderActor(consoleWriterActor))
-
+            var consoleWriterActor = MyActorSystem.ActorOf(Props.Create(() => new ConsoleWriterActor()));
+            var consoleReaderActor = MyActorSystem.ActorOf(Props.Create(() => new ConsoleReaderActor(consoleWriterActor)));
 
             // tell console reader to begin
-            //YOU NEED TO FILL IN HERE
+            consoleReaderActor.Tell("start");
 
             // blocks the main thread from exiting until the actor system is shut down
             MyActorSystem.WhenTerminated.Wait();
@@ -35,9 +36,9 @@ namespace WinTail
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.Write(" red ");
             Console.ResetColor();
-            Console.Write(" and others will appear as");
+            Console.Write("and others will appear as");
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write(" green! ");
+            Console.Write(" green!");
             Console.ResetColor();
             Console.WriteLine();
             Console.WriteLine();
