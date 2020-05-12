@@ -34,7 +34,6 @@
   <ItemGroup>
     <Reference Include="Akka, Version=1.1.1.27, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\Akka.1.1.1\lib\net45\Akka.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -59,7 +58,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Actors\ButtonToggleActor.cs" />
     <Compile Include="Actors\ChartingActor.cs" />
+    <Compile Include="Actors\ChartingMessages.cs" />
+    <Compile Include="Actors\PerformanceCounterActor.cs" />
+    <Compile Include="Actors\PerformanceCounterCoordinatorActor.cs" />
     <Compile Include="ChartDataHelper.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
