@@ -7,7 +7,7 @@ using Akka.Configuration.Hocon;
 namespace GithubActors
 {
     /// <summary>
-    /// Access token: 4b28200d1f13a24c849d492a07abb92d3361f6b4
+    /// Access token: 2076435da696435a9de98ea27fa9087fe0165bc1
     /// Repo URL: https://github.com/akkadotnet/akka.net
     /// Repo URL: https://github.com/petabridge/akka-bootcamp
     /// Repo URL: https://github.com/Aaronontheweb/mvc-utilities
